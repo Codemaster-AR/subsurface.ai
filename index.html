@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>SubSurface AI – Archaeology Intelligence</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    :root {
+        --blue:#0b3c5d;
+        --teal:#1ca7a6;
+        --orange:#f4a261;
+        --red:#e63946;
+        --green:#2a9d8f;
+        --bg:#f7f9fb;
+    }
+
+    body {
+        margin: 0;
+        font-family: "Segoe UI", system-ui, sans-serif;
+        background: var(--bg);
+        color: #222;
+    }
+
+    header {
+        background: linear-gradient(135deg, var(--blue), var(--teal));
+        color: white;
+        padding: 30px;
+        text-align: center;
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 2.4rem;
+    }
+
+    header p {
+        margin-top: 8px;
+        opacity: 0.9;
+    }
+
+    section {
+        padding: 40px 8%;
+    }
+
+    h2 {
+        color: var(--blue);
+        margin-bottom: 15px;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+        gap: 20px;
+    }
+
+    .card {
+        background: white;
+        border-radius: 14px;
+        padding: 20px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        transition: transform 0.3s;
+    }
+
+    .card:hover {
+        transform: translateY(-6px);
+    }
+
+    .card h3 {
+        margin-top: 0;
+        color: var(--teal);
+    }
+
+    .flow {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: center;
+    }
+
+    .step {
+        background: white;
+        border-radius: 50%;
+        width: 160px;
+        height: 160px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 15px;
+        box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    .step:hover {
+        background: var(--teal);
+        color: white;
+    }
+
+    .heatmap {
+        display: flex;
+        height: 50px;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-top: 15px;
+    }
+
+    .heatmap div {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        color: white;
+    }
+
+    .low { background: #457b9d; }
+    .mid { background: #f4a261; }
+    .high { background: #e63946; }
+
+    .slider-box {
+        background: white;
+        padding: 25px;
+        border-radius: 14px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
+
+    input[type=range] {
+        width: 100%;
+    }
+
+    .output {
+        margin-top: 15px;
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    footer {
+        background: #111;
+        color: #aaa;
+        padding: 20px;
+        text-align: center;
+        font-size: 0.9rem;
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>SubSurface AI</h1>
+    <p>Transforming GPR Signals into Archaeological Intelligence using AI & LLMs</p>
+</header>
+
+<section>
+    <h2>🎯 App Goal</h2>
+    <div class="grid">
+        <div class="card">
+            <h3>Problem</h3>
+            Archaeologists often excavate based on guesswork, risking time, money, and heritage loss.
+        </div>
+        <div class="card">
+            <h3>Solution</h3>
+            Use GPR + AI + Large Datasets + LLM reasoning to predict what lies underground.
+        </div>
+        <div class="card">
+            <h3>Outcome</h3>
+            High-confidence archaeological site confirmation before digging.
+        </div>
+    </div>
+</section>
+
+<section>
+    <h2>🧠 AI Processing Flow</h2>
+    <div class="flow">
+        <div class="step">GPR Scan Upload</div>
+        <div class="step">Signal Cleaning</div>
+        <div class="step">Feature Detection</div>
+        <div class="step">Dataset Matching</div>
+        <div class="step">Probability Scoring</div>
+        <div class="step">LLM Explanation</div>
+        <div class="step">3D Reconstruction</div>
+    </div>
+</section>
+
+<section>
+    <h2>🔥 Probability Heat Map Logic</h2>
+    <p>Each underground region receives a probability score of being human-made.</p>
+    <div class="heatmap">
+        <div class="low">0–40%</div>
+        <div class="mid">41–60%</div>
+        <div class="high">61–100%</div>
+    </div>
+</section>
+
+<section>
+    <h2>🎛 Interactive Probability Simulator</h2>
+    <div class="slider-box">
+        <label>Simulated AI Probability Output</label>
+        <input type="range" min="0" max="100" value="50" id="probSlider">
+        <div class="output" id="probResult">50% – Uncertain anomaly</div>
+    </div>
+</section>
+
+<section>
+    <h2>🗣️ LLM Reasoning (AI Explanation)</h2>
+    <div class="card" id="llmBox">
+        “This anomaly is under evaluation. Adjust probability to view AI reasoning.”
+    </div>
+</section>
+
+<section>
+    <h2>🏺 Predicted Underground Structures & Artifacts</h2>
+    <div class="grid">
+        <div class="card">
+            <h3>Structures</h3>
+            Foundations, walls, chambers, roads (semi-transparent reconstruction)
+        </div>
+        <div class="card">
+            <h3>Artifacts (Predicted)</h3>
+            Pottery, coins, tools – clearly marked as non-confirmed
+        </div>
+        <div class="card">
+            <h3>Ethics</h3>
+            AI supports excavation decisions but does not replace physical validation.
+        </div>
+    </div>
+</section>
+
+<footer>
+    Student Innovation Project • Archaeology × AI × Imaging • SubSurface AI
+</footer>
+
+<script>
+    const slider = document.getElementById("probSlider");
+    const result = document.getElementById("probResult");
+    const llmBox = document.getElementById("llmBox");
+
+    slider.oninput = function () {
+        const value = this.value;
+
+        if (value < 40) {
+            result.innerHTML = value + "% – Natural soil likely";
+            llmBox.innerHTML =
+                "LLM Analysis: The signal pattern lacks symmetry and depth consistency typical of human-made structures.";
+        } else if (value < 60) {
+            result.innerHTML = value + "% – Uncertain anomaly";
+            llmBox.innerHTML =
+                "LLM Analysis: The anomaly shows partial geometric features but insufficient repetition for confirmation.";
+        } else {
+            result.innerHTML = value + "% – Likely human-made structure";
+            llmBox.innerHTML =
+                "LLM Analysis: Rectangular geometry, strong reflections, and repeated patterns match known archaeological foundations with high confidence.";
+        }
+    };
+</script>
+
+</body>
+</html>
